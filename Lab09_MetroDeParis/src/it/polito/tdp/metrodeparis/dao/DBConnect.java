@@ -4,9 +4,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+import com.mchange.v2.c3p0.DataSources;
+
+
+
+
+
 public class DBConnect {
 
 	static private final String jdbcUrl = "jdbc:mysql://localhost/metroparis?user=root";
+	
 	static private DBConnect instance = null;
 
 	private DBConnect() {
@@ -23,13 +32,16 @@ public class DBConnect {
 
 	public Connection getConnection() {
 		try {
-			
+
 			Connection conn = DriverManager.getConnection(jdbcUrl);
 			return conn;
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Errore di connessione al database");
+			throw new RuntimeException("Cannot get connection " + jdbcUrl, e);
 		}
 	}
+
 }
+
+
