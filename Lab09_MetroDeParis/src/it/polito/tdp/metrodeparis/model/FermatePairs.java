@@ -14,6 +14,10 @@ public class FermatePairs extends DefaultWeightedEdge{
 	private int id;
 	private int intervallo;
 	private int velocita;
+	
+	public FermatePairs(){
+		super();
+	}
 	public FermatePairs(Fermata fermata1, Fermata fermata2, int id, int intervallo, int velocita) {
 		super();
 		this.fermata1 = fermata1;
@@ -52,13 +56,22 @@ public class FermatePairs extends DefaultWeightedEdge{
 	public void setVelocita(int velocita) {
 		this.velocita = velocita;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((fermata1 == null) ? 0 : fermata1.hashCode());
+		result = prime * result + ((fermata2 == null) ? 0 : fermata2.hashCode());
 		result = prime * result + id;
 		return result;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -68,6 +81,16 @@ public class FermatePairs extends DefaultWeightedEdge{
 		if (getClass() != obj.getClass())
 			return false;
 		FermatePairs other = (FermatePairs) obj;
+		if (fermata1 == null) {
+			if (other.fermata1 != null)
+				return false;
+		} else if (!fermata1.equals(other.fermata1))
+			return false;
+		if (fermata2 == null) {
+			if (other.fermata2 != null)
+				return false;
+		} else if (!fermata2.equals(other.fermata2))
+			return false;
 		if (id != other.id)
 			return false;
 		return true;

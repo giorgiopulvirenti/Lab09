@@ -7,6 +7,7 @@ public class Fermata {
 	private int idFermata;
 	private String nome;
 	private LatLng coords;
+	private int codice=0;
 
 	public Fermata(int idFermata, String nome, LatLng coords) {
 		this.idFermata = idFermata;
@@ -61,6 +62,20 @@ public class Fermata {
 		return true;
 	}
 	
+	/**
+	 * @return the codice
+	 */
+	public int getCodice() {
+		return codice;
+	}
+
+	/**
+	 * @param codice the codice to set
+	 */
+	public void setCodice(int codice) {
+		this.codice = codice;
+	}
+
 	@Override
 	public String toString() {
 		return nome;
